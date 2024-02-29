@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -47,23 +47,23 @@ begin
 
 case alu is
 when "0000" =>  --0
-
+Output <= std_logic_vector(unsigned(A) + unsigned(B));
 when "0001" =>  --1
-
+Output <= std_logic_vector(unsigned(A) - unsigned(B));
 when "0010" =>  --2
-
+Output <= std_logic_vector(unsigned(A) + "0001");
 when "0011" =>  --3
-
+Output <= std_logic_vector(unsigned(A) - "0001");
 when "0100" =>  --4
-
+Output <= std_logic_vector("0000" - unsigned(A));
 when "0101" =>  --5
 
 when "0110" =>  --6
-
+Output <= A(2 downto 0) & '0';
 when "0111" =>  --7
-
+Output <= '0' & A(3 downto 1);
 when "1000" =>  --8
-
+Output <= std_logic_vector(shift_right(signed(A), 1));
 when "1001" =>  --9
 Output <= not(A);
 when "1010" =>  --A
